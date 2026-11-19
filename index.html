@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Keyzone.mn — Цахим түлхүүр, 60 секундэд</title>
+<style>
+:root{--bg:#fafaf7;--card:#fff;--ink:#14151a;--mute:#6a6d78;--line:#e6e6df;--acc:#2f5bff;--acc2:#e8edff;--ok:#12a150;--hot:#e5484d;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0f13;--card:#17181e;--ink:#f1f1ee;--mute:#9a9da8;--line:#2a2b33;--acc:#7b97ff;--acc2:#1d2340;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e0f13;--card:#17181e;--ink:#f1f1ee;--mute:#9a9da8;--line:#2a2b33;--acc:#7b97ff;--acc2:#1d2340;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+.nav{display:flex;align-items:center;gap:14px;height:64px}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.02em}.logo b{color:var(--acc)}
+.search{flex:1;max-width:420px;margin-left:auto}
+.search input{width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);font:inherit;font-size:14px}
+.btn{display:inline-block;border:0;cursor:pointer;background:var(--acc);color:#fff;padding:10px 18px;border-radius:999px;font:600 14px/1 inherit;font-family:inherit}
+.btn.ghost{background:var(--acc2);color:var(--acc)}
+.cart{position:relative}
+.cart span{position:absolute;top:-6px;right:-6px;background:var(--hot);color:#fff;border-radius:99px;font-size:11px;min-width:18px;height:18px;display:grid;place-items:center}
+.ticker{background:var(--ink);color:var(--bg);font-size:13px;overflow:hidden;white-space:nowrap}
+.ticker div{display:inline-block;padding:7px 0;animation:mq 30s linear infinite}
+.ticker i{font-style:normal;margin:0 28px}
+@keyframes mq{to{transform:translateX(-50%)}}
+.hero{padding:64px 0 40px;display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:center}
+.hero h1{font-size:clamp(38px,6vw,68px);line-height:1.02;letter-spacing:-.03em;margin:0 0 16px}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.hero p{color:var(--mute);max-width:520px;font-size:18px;margin:0 0 24px}
+.offer{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
+.offer small{color:var(--hot);font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:12px}
+.offer h3{margin:8px 0 4px;font-size:22px}
+.timer{font:700 28px/1.2 ui-monospace,Menlo,monospace;margin:10px 0 16px}
+.brands{border-block:1px solid var(--line);padding:16px 0;color:var(--mute);font-weight:600;display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:center;font-size:14px}
+section{padding:56px 0}
+.sh{display:flex;align-items:end;justify-content:space-between;margin-bottom:24px;gap:12px}
+.sh small{color:var(--acc);font-weight:700;font-size:12px;letter-spacing:.06em}
+.sh h2{margin:2px 0 0;font-size:30px;letter-spacing:-.02em}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:999px;font:500 14px inherit;font-family:inherit;cursor:pointer}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.p{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:10px;transition:transform .15s,border-color .15s}
+.p:hover{transform:translateY(-3px);border-color:var(--acc)}
+.ic{height:96px;border-radius:12px;background:var(--acc2);display:grid;place-items:center;font-size:40px;position:relative}
+.off{position:absolute;top:8px;left:8px;background:var(--hot);color:#fff;font:700 12px/1 system-ui;padding:5px 8px;border-radius:99px}
+.p h4{margin:0;font-size:16px}
+.tag{color:var(--mute);font-size:13px}
+.price{display:flex;align-items:baseline;gap:8px;margin-top:auto}
+.price b{font-size:20px}.price s{color:var(--mute);font-size:14px}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.how div,.why div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.how b{color:var(--acc);font:700 13px ui-monospace,monospace}
+.how h4{margin:8px 0 4px;font-size:18px}.how p,.why p{margin:0;color:var(--mute);font-size:14px}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.why strong{display:block;font-size:40px;letter-spacing:-.03em;color:var(--acc)}
+.why h4{margin:4px 0 6px}
+.rev{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.rev blockquote{margin:0;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;font-size:15px}
+.rev cite{display:block;margin-top:12px;color:var(--mute);font-size:13px;font-style:normal}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}
+details p{color:var(--mute);margin:10px 0 0}
+footer{border-top:1px solid var(--line);padding:40px 0;color:var(--mute);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between}
+footer h5{margin:0 0 8px;color:var(--ink);font-size:14px}
+footer a{display:block;padding:2px 0}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,120px);background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:99px;font-size:14px;transition:transform .25s;z-index:40}
+.toast.show{transform:translate(-50%,0)}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:40px}.search{display:none}.cart{margin-left:auto}}
+</style>
+</head>
+<body>
+<div class="ticker"><div id="tk"></div></div>
+<header><div class="wrap nav">
+  <a class="logo" href="#top">Key<b>zone</b>.mn</a>
+  <div class="search"><input id="q" placeholder="Хайх — Windows, Office, Adobe…" aria-label="Хайх"></div>
+  <a class="btn ghost cart" href="#shop" id="cartbtn">Сагс<span id="cn">0</span></a>
+</div></header>
+
+<main id="top">
+<div class="wrap hero">
+  <div>
+    <h1>Жинхэнэ түлхүүр. <em>60 секундэд</em> танд.</h1>
+    <p>Windows-оо идэвхжүүл, Steam-ээ цэнэглэ. Төлбөрөө төлөөд имэйлээ л шалга — бусдыг нь бид амжуулна.</p>
+    <a class="btn" href="#shop">Дэлгүүр үзэх</a>
+  </div>
+  <div class="offer">
+    <small>Хязгаарлагдмал санал</small>
+    <h3>Google AI Gemini Pro</h3>
+    <div class="tag">Хувийн акаунт · 12 сар</div>
+    <div class="timer" id="timer">00ө 00:00:00</div>
+    <button class="btn" data-add="Google AI Gemini Pro">Сагсанд нэмэх — 69,000₮</button>
+  </div>
+</div>
+<div class="wrap brands"><span>Microsoft</span><span>Adobe</span><span>Autodesk</span><span>Canva</span><span>Netflix</span><span>Spotify</span><span>Steam</span><span>PlayStation</span><span>Xbox</span><span>OpenAI</span><span>McAfee</span><span>Kaspersky</span></div>
+
+<section id="shop"><div class="wrap">
+  <div class="sh"><div><small>01 · ДЭЛГҮҮР</small><h2>Бүх бүтээгдэхүүн</h2></div></div>
+  <div class="chips" id="chips"></div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section style="background:var(--card);border-block:1px solid var(--line)"><div class="wrap">
+  <div class="sh"><div><small>02 · ХЭРХЭН АЖИЛЛАДАГ</small><h2>4 алхамаар идэвхжүүл</h2></div></div>
+  <div class="how">
+    <div><b>01</b><h4>Сонго</h4><p>Хэрэгтэй бүтээгдэхүүн, лицензийн хугацаагаа ол.</p></div>
+    <div><b>02</b><h4>Төл</h4><p>QPay, Visa, Master, банкны карт — бүгд төгрөгөөр.</p></div>
+    <div><b>03</b><h4>Имэйлээ шалга</h4><p>Түлхүүр 60 секундын дотор очно.</p></div>
+    <div><b>04</b><h4>Идэвхжүүл</h4><p>Алхам алхмаар заавар хамт ирнэ.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sh"><div><small>03 · ЯАГААД БИД?</small><h2>Яагаад Keyzone?</h2></div></div>
+  <div class="why">
+    <div><strong>60с</strong><h4>Хүлээлт гэж үгүй</h4><p>Төлбөр баталгаажмагц түлхүүрээ шууд хүлээн авна.</p></div>
+    <div><strong>100%</strong><h4>Баталгаат түлхүүр</h4><p>Ажиллахгүй бол үнэгүй солино.</p></div>
+    <div><strong>10k+</strong><h4>Сэтгэл хангалуун худалдан авагч</h4><p>Монголдоо найдвартай үйлчилнэ.</p></div>
+    <div><strong>24/7</strong><h4>Асуувал хүн хариулна</h4><p>Чат, утас, Messenger — монголоор, хурдан.</p></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="sh"><div><small>04 · СЭТГЭГДЭЛ</small><h2>Худалдан авагчдын сэтгэгдэл</h2></div></div>
+  <div class="rev">
+    <blockquote>Нэрийг нь сайн мэдэхгүй байсан болохоор эргэлзсэн ч захиалж үзлээ. Ямар ч асуудалгүй идэвхжлээ, баярлалаа.<cite>Жишээ хэрэглэгч · Office 2024</cite></blockquote>
+    <blockquote>Олон жил худалдан авч байна. Найдвартай, шуурхай үйлчилгээ.<cite>Жишээ хэрэглэгч · Windows 11 Pro</cite></blockquote>
+    <blockquote>Түлхүүр хэдхэн секундэд ирсэн. Заавар нь ойлгомжтой байлаа.<cite>Жишээ хэрэглэгч · Canva Pro</cite></blockquote>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap" style="max-width:760px">
+  <div class="sh"><div><small>05 · АСУУЛТ</small><h2>Түгээмэл асуулт</h2></div></div>
+  <details><summary>Хэр хурдан хүлээн авах вэ?</summary><p>Гүйлгээг баталгаажуулсны дараа код таны имэйл рүү 60 секундын дотор очно. Ажлын цагаас гадуур хэсэг хугацаа хүлээж магадгүй.</p></details>
+  <details><summary>Хэрэв код ажиллахгүй бол?</summary><p>Баримтын дугаараараа бидэнтэй холбогдоно уу. Баталгаат хугацаанд ажиллахгүй кодыг үнэ төлбөргүй сольно.</p></details>
+  <details><summary>Эдгээр лиценз албан ёсны юу?</summary><p>Тийм. Бүх түлхүүр албан ёсны эх сурвалжаас ирдэг.</p></details>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div><div class="logo">Key<b>zone</b>.mn</div><p>Монгол улс, Улаанбаатар хот<br>info@keyzone.mn</p></div>
+  <div><h5>Дэлгүүр</h5><a href="#shop">Үйлдлийн систем</a><a href="#shop">Office программ</a><a href="#shop">Вирусны хамгаалалт</a><a href="#shop">Тоглоом</a></div>
+  <div><h5>Тусламж</h5><a href="#top">Бүртгэл</a><a href="#top">Буцаалт</a><a href="#top">Үйлчилгээний нөхцөл</a></div>
+  <div style="width:100%;border-top:1px solid var(--line);padding-top:16px">© 2026 Keyzone. Жишээ дизайн (demo).</div>
+</div></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+var P=[
+["Windows 10/11 Pro","os","🪟",24900,99000],
+["Microsoft Office 2024 Pro Plus","office","📊",49000,99000],
+["Microsoft Office 365","office","📎",29000,50000],
+["Microsoft Office 2021 Pro Plus","office","📈",34000,49999],
+["Google AI Gemini Pro","ai","✨",69000,99000],
+["ChatGPT Plus","ai","💬",64800,72000],
+["Adobe Creative Cloud","creative","🎨",97200,132000],
+["Adobe Express","creative","🖌️",26000,67000],
+["Canva Pro","creative","🧩",19900,50000],
+["CapCut Pro","creative","🎬",216000,430000],
+["Autodesk AutoCAD","eng","📐",169000,229000],
+["Trend Micro","av","🛡️",59000,0],
+["McAfee","av","🔒",49000,0],
+["Avast","av","🦠",69000,0],
+["GTA 5 Enhanced","games","🎮",54000,0],
+["Steam Gift Card","gift","🎁",30000,0]
+];
+var C=[["all","Бүгд"],["os","Үйлдлийн систем"],["office","Office"],["ai","AI"],["creative","Дизайн"],["eng","Инженер"],["av","Вирусны хамгаалалт"],["games","Тоглоом"],["gift","Бэлгийн карт"]];
+var cat="all",term="",cart=0;
+function fmt(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")+"₮"}
+function toast(t){var e=document.getElementById("toast");e.textContent=t;e.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(function(){e.classList.remove("show")},1800)}
+function add(n){cart++;document.getElementById("cn").textContent=cart;toast(n+" сагсанд нэмэгдлээ")}
+function render(){
+  var h="";
+  P.forEach(function(p){
+    if(cat!=="all"&&p[1]!==cat)return;
+    if(term&&p[0].toLowerCase().indexOf(term)<0)return;
+    var d=p[4]?Math.round((1-p[3]/p[4])*100):0;
+    h+='<div class="p"><div class="ic">'+(d?'<span class="off">−'+d+'%</span>':'')+p[2]+'</div><h4>'+p[0]+'</h4><div class="tag">Шуурхай имэйл хүргэлт</div><div class="price"><b>'+fmt(p[3])+'</b>'+(p[4]?'<s>'+fmt(p[4])+'</s>':'')+'</div><button class="btn" data-add="'+p[0]+'">Сагсанд нэмэх</button></div>';
+  });
+  document.getElementById("grid").innerHTML=h||'<p class="tag">Илэрц олдсонгүй.</p>';
+}
+var ch=document.getElementById("chips");
+C.forEach(function(c){var b=document.createElement("button");b.className="chip"+(c[0]==="all"?" on":"");b.textContent=c[1];b.onclick=function(){cat=c[0];[].forEach.call(ch.children,function(x){x.classList.remove("on")});b.classList.add("on");render()};ch.appendChild(b)});
+document.getElementById("q").oninput=function(e){term=e.target.value.toLowerCase().trim();render()};
+document.addEventListener("click",function(e){var n=e.target.getAttribute&&e.target.getAttribute("data-add");if(n)add(n)});
+var tk="";["Office 2024 Pro Plus худалдан авлаа","Windows 11 Pro худалдан авлаа","Canva Pro худалдан авлаа","Adobe Express худалдан авлаа"].forEach(function(t,i){tk+="<i>Хэрэглэгч "+(i+1)+"*** "+t+"</i>"});
+document.getElementById("tk").innerHTML=tk+tk;
+var end=Date.now()+(19*864e5+14*36e5);
+function tick(){var s=Math.max(0,Math.floor((end-Date.now())/1000)),d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60),x=s%60,z=function(v){return(v<10?"0":"")+v};document.getElementById("timer").textContent=d+"ө "+z(h)+":"+z(m)+":"+z(x)}
+tick();setInterval(tick,1000);render();
+</script>
+</body>
+</html>
